@@ -101,7 +101,7 @@ public class PurchaseController {
 	@RequestMapping(value = "getPurchase", method = RequestMethod.GET)
 	public ModelAndView getPurchase( @RequestParam("tranNo") int tranNo) throws Exception {
 		
-		System.out.println("/purchase/getPurchase");
+		System.out.println("/purchase/getPurchase get방식!");
 		//Business Logic
 		Purchase purchase = purchaseService.getPurchase(tranNo);
 		// Model 과 View 연결

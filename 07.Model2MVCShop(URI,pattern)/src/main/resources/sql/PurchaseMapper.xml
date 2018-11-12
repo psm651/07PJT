@@ -61,6 +61,7 @@
 
 <result jdbcType="NUMERIC" column="TRAN_NO" property="tranNo"/>
 <result jdbcType="NUMERIC" column="PROD_NO" property="purchaseProd.prodNo"/>
+<result jdbcType="VARCHAR" column="PROD_NAME" property="purchaseProd.prodName"/>
 <result jdbcType="VARCHAR" column="BUYER_ID" property="buyer.userId"/>
 <result jdbcType="CHAR" column="PAYMENT_OPTION" property="paymentOption"/>
 <result jdbcType="VARCHAR" column="RECEIVER_NAME" property="receiverName"/>

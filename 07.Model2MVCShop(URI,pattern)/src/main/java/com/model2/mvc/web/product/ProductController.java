@@ -87,6 +87,7 @@ public class ProductController {
 		}
 		
 		Cookie cookie= new Cookie("history", history);
+		cookie.setPath("/");
 		response.addCookie(cookie);
 		
 		// Model °ú View ¿¬°á

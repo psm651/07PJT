@@ -17,7 +17,7 @@ public class Purchase {
 	private String receiverPhone;
 	private String tranCode;
 	private int tranNo;
-	
+
 	public Purchase(){
 	}
 	
