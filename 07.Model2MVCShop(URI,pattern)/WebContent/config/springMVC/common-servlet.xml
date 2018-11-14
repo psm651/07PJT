@@ -59,6 +59,8 @@
 	<bean id="logonCheckInterceptor"	class="com.model2.mvc.common.web.LogonCheckInterceptor" />
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->		           
 
+<bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 	<!--  :: ViewResolver 선언 -->	
     <bean id="viewResolver"

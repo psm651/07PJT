@@ -1,11 +1,11 @@
 package com.model2.mvc.web.product;
 
+import java.io.File;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
-import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 
 
@@ -61,10 +61,13 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="addProduct", method = RequestMethod.POST)
-	public String addProduct( @ModelAttribute("product") Product product ) throws Exception {
+	public String addProduct( @ModelAttribute("product") Product product, @RequestParam("fileNa") MultipartFile file ) throws Exception {
 
 		System.out.println("/product/addProduct : POST");
 		//Business Logic
+		File file1=new File("C:\\Users\\Bit\\git\\repository7\\07.Model2MVCShop(URI,pattern)\\WebContent\\images\\uploadFiles\\",file.getOriginalFilename());
+		file.transferTo(file1);
+		product.setFileName(file.getOriginalFilename());
 		productService.addProduct(product);
 		
 		return "forward:/product/addProductConform.jsp";

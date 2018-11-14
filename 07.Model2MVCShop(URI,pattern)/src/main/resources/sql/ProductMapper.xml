@@ -15,20 +15,21 @@
 		<result property="prodName" 		column="prod_name" 			jdbcType="VARCHAR" />
 		<result property="prodNo" 			column="prod_no" 				jdbcType="NUMERIC" />
 		<result property="regDate" 			column="reg_date" 				jdbcType="VARCHAR" />
-		<result property="proTranCode" 	column="tran_status_code" 					jdbcType="NUMERIC"  />
+		<result property="proTranCode" 	column="tran_status_code" 		jdbcType="NUMERIC"  />
+		<result property="stock" 				column="stock" 					jdbcType="NUMERIC"  />
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
 	<insert 	id="addProduct"		parameterType="com.model2.mvc.service.domain.Product" >
 	 	INSERT
-		INTO product( prod_no , prod_name , prod_detail , manufacture_day , price, image_file, reg_date) 
+		INTO product( prod_no , prod_name , prod_detail , manufacture_day , price, image_file, reg_date,stock) 
 		VALUES	 (seq_product_prod_no.nextval, #{prodName} , #{prodDetail} , TO_DATE(#{manuDate},'YYYY-MM-DD'), #{price:INTEGER} , 
-							#{fileName} , SYSDATE )
+							#{fileName} , SYSDATE, #{stock})
 	 </insert>
 	
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getProduct"	parameterType="int"	resultMap="productSelectMap">
-		SELECT p.prod_no, p.prod_name, p.image_file, p.prod_detail, p.manufacture_day, p.price, p.reg_date, t.tran_status_code
+		SELECT p.prod_no, p.prod_name, p.image_file, p.prod_detail, p.manufacture_day, p.price, p.reg_date, t.tran_status_code,p.stock
 		 FROM product p, transaction t 
 		 WHERE p.prod_no = t.prod_no(+) AND p.prod_no= #{value}
 	 </select>
@@ -41,6 +42,7 @@
 			prod_detail 	= 	#{prodDetail} ,
 			manufacture_day	=	TO_DATE(#{manuDate},'YYYY-MM-DD'),
 			price	=	#{price:INTEGER},
+			stock  =  #{stock},
 			image_file	=	#{fileName}
 			
 	   	</set>

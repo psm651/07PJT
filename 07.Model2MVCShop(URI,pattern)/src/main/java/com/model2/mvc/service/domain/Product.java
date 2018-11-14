@@ -13,6 +13,7 @@ public class Product {
 	private int prodNo;
 	private Date regDate;
 	private String proTranCode;
+	private int stock;
 	
 	public Product(){
 	}
@@ -64,6 +65,14 @@ public class Product {
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	// Override
